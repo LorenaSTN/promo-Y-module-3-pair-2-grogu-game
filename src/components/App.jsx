@@ -15,13 +15,13 @@ function App() {
     </header>
     <main className="page">
       <section className="board">
-        <div className="cell"><div className="grogu">👣</div></div>
-        <div className="cell"></div>
-        <div className="cell"></div>
-        <div className="cell"></div>
-        <div className="cell"></div>
-        <div className="cell"></div>
-        <div className="cell"></div>
+        <div className="board__cell"><div className="grogu">👣</div></div>
+        <div className="board__cell"></div>
+        <div className="board__cell"></div>
+        <div className="board__cell"></div>
+        <div className="board__cell"></div>
+        <div className="board__cell"></div>
+        <div className="board__cell"></div>
       </section>
 
       <section>
@@ -29,20 +29,20 @@ function App() {
         <div className="game-status">En curso</div>
       </section>
 
-      <section className="goods-container">
-        <div className="goods-item">🍪</div>
-        <div className="goods-item">🍪</div>
-        <div className="goods-item">🍪</div>
+      <section className="goods__container">
+        <div className="goods__item">🍪</div>
+        <div className="goods__item">🍪</div>
+        <div className="goods__item">🍪</div>
       </section>
-      <section className="goods-container">
-        <div className="goods-item">🥚</div>
-        <div className="goods-item">🥚</div>
-        <div className="goods-item">🥚</div>
+      <section className="goods__container">
+        <div className="goods__item">🥚</div>
+        <div className="goods__item">🥚</div>
+        <div className="goods__item">🥚</div>
       </section>
-      <section className="goods-container">
-        <div className="goods-item">🐸</div>
-        <div className="goods-item">🐸</div>
-        <div className="goods-item">🐸</div>
+      <section className="goods__container">
+        <div className="goods__item">🐸</div>
+        <div className="goods__item">🐸</div>
+        <div className="goods__item">🐸</div>
       </section>
       <section>
         <button className="restart-button">Reiniciar Juego</button>
