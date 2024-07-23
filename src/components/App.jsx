@@ -1,4 +1,3 @@
-
 import '../scss/App.scss';
 
 function App() {
@@ -6,7 +5,6 @@ function App() {
     <>
      <header>
       <h1 className="title">¡Cuidado con Grogu!</h1>
-      {/* <h3 className="title_subtitle">Introduce tu nombre para jugar</h3> */}
     <form className="form" action="">
       <label className="title_subtitle" htmlFor="name">Introduce tu nombre para jugar</label>
       <input className="input" type="text" name="name" id="name" placeholder="Tu nombre" />
