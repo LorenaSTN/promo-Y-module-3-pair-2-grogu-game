@@ -9,6 +9,11 @@ function App() {
   const [wonGame, setWonGame] = useState (false);
   const [gameOver, setGameOver] = useState (false);
 
+  const [cookies, setCookies] = useState(3);
+  const [eggs, setEggs] = useState(3);
+  const [Frogs, setFrogs] = useState(3);
+
+
 
   const handleChangeUserName = (event) => {
     const valueUserName = event.target.value;
