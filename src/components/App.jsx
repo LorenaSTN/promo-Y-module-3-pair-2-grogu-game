@@ -11,7 +11,7 @@ function App() {
 
   const [cookies, setCookies] = useState(3);
   const [eggs, setEggs] = useState(3);
-  const [Frogs, setFrogs] = useState(3);
+  const [frogs, setFrogs] = useState(3);
 
 
 
