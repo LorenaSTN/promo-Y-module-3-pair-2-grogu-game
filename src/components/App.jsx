@@ -1,13 +1,54 @@
 import '../scss/App.scss';
+import { useState } from 'react';
 
 function App() {
+
+  const [userName, setUserName] = useState("");
+  const [dice, setDice] = useState(null);
+  const [groguPosition, setGroguPosition] = useState (0);
+  const [wonGame, setWonGame] = useState (false);
+  const [gameOver, setGameOver] = useState (false);
+
+
+  const handleChangeUserName = (event) => {
+    const valueUserName = event.target.value;
+    setUserName(valueUserName);
+  }
+
+  const handleClickDice = () => {
+    const randomNumber = Math.floor(Math.random() * 4) + 1; // Genera un número entre 1 y 4
+    setDice(randomNumber);
+
+    if (randomNumber === 1){
+    console.log("el numero es 1")
+    }else if (randomNumber === 2){
+    console.log("el numero es 2")
+    }else if (randomNumber === 3){
+    console.log("el numero es 3")
+    }else{
+    console.log("El numero es 4")
+    };
+  };
+
+
+  const handleClickReset = () => {
+   setUserName("");
+   setDice(null);
+   setGroguPosition(0);
+   setWonGame(false);
+   setGameOver(false);
+  };
+
+  
+
+
   return (
     <>
      <header>
-      <h1 className="title">¡Cuidado con Grogu!</h1>
+      <h1 className="title">¡Cuidado con Grogu {userName}!</h1>
     <form className="form" action="">
       <label className="title_subtitle" htmlFor="name">Introduce tu nombre para jugar</label>
-      <input className="input" type="text" name="name" id="name" placeholder="Tu nombre" />
+      <input className="input" type="text" name="name" id="name" placeholder="Tu nombre" onChange={handleChangeUserName} />
     </form>
 
     </header>
@@ -23,8 +64,10 @@ function App() {
       </section>
 
       <section>
-        <button className="dice">Lanzar Dado</button>
-        <div className="game-status">En curso</div>
+        <button className="dice"  onClick={handleClickDice}>Lanzar Dado</button>
+
+        {/* Esto hay que cambiarlo con el mensaje que da cada cara: */}
+        <div className="game-status">{dice}</div>
       </section>
 
       <section className="goods__container">
@@ -43,7 +86,7 @@ function App() {
         <div className="goods__item">🐸</div>
       </section>
       <section>
-        <button className="restart-button">Reiniciar Juego</button>
+        <button className="restart-button" onClick={handleClickReset}>Reiniciar Juego</button>
       </section>
     </main>
     </>
