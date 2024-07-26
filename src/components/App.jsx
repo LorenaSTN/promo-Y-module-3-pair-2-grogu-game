@@ -25,11 +25,11 @@ function App() {
     setDice(randomNumber);
 
     if (randomNumber === 1) {
-      setCookies((cookies) => cookies - "");
+      cookies.pop(); //con el metodo pop eliminamos el elemento del arry
     } else if (randomNumber === 2) {
-      console.log("el numero es 2");
+      eggs.pop();
     } else if (randomNumber === 3) {
-      console.log("el numero es 3");
+      frogs.pop();
     } else {
       setGroguPosition((groguPosition) => groguPosition + 1);
     }
@@ -61,19 +61,13 @@ function App() {
         </section>
 
         <section className="goods__container">
-          <div className="goods__item">🍪</div>
-          <div className="goods__item">🍪</div>
-          <div className="goods__item">🍪</div>
+          {cookies.map(() => <div className="goods__item">🍪</div>)}  {/* map pinta el hmtl con la cantidad de elementos del arry*/}
         </section>
         <section className="goods__container">
-          <div className="goods__item">🥚</div>
-          <div className="goods__item">🥚</div>
-          <div className="goods__item">🥚</div>
+        {eggs.map(() => <div className="goods__item">🥚</div>)}
         </section>
         <section className="goods__container">
-          <div className="goods__item">🐸</div>
-          <div className="goods__item">🐸</div>
-          <div className="goods__item">🐸</div>
+         {frogs.map(() => <div className="goods__item">🐸</div> )} 
         </section>
         <section>
           <button className="restart-button" onClick={handleClickReset}>
