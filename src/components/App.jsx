@@ -22,7 +22,7 @@ function App() {
   }
 
   const handleClickDice = () => {
-    const randomNumber = Math.floor(Math.random() * 4) + 1; // Genera un número entre 1 y 4
+    const randomNumber = Math.floor(Math.random() * 4) + 1;
     setDice(randomNumber);
 
     if (randomNumber === 1){
