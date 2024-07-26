@@ -8,10 +8,11 @@ function App() {
   const [groguPosition, setGroguPosition] = useState (0);
   const [wonGame, setWonGame] = useState (false);
   const [gameOver, setGameOver] = useState (false);
+  const [gameStatus, setGameStatus] = useState("en curso");
 
-  const [cookies, setCookies] = useState(3);
-  const [eggs, setEggs] = useState(3);
-  const [frogs, setFrogs] = useState(3);
+  const [cookies, setCookies] = useState(["🍪", "🍪", "🍪"]);
+  const [eggs, setEggs] = useState(["🥚", "🥚", "🥚"]);
+  const [frogs, setFrogs] = useState(["🐸", "🐸", "🐸"]);
 
 
 
