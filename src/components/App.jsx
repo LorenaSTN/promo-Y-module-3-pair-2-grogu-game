@@ -2,7 +2,7 @@ import "../scss/App.scss";
 import { useState } from "react";
 import Header from "./Header";
 import Board from "./Board";
-
+import Dice from "./Dice";
 function App() {
   // const [userName, setUserName] = useState("");
   const [dice, setDice] = useState(null);
@@ -20,20 +20,33 @@ function App() {
   //   setUserName(valueUserName);
   // };
 
-  const handleClickDice = () => {
-    const randomNumber = Math.floor(Math.random() * 4) + 1;
-    setDice(randomNumber);
+     const rollDice = () => {
+      const randomNumber = Math.floor(Math.random() * 4) + 1;
+      setDice(randomNumber);
+      console.log(randomNumber)
 
-    if (randomNumber === 1) {
-      cookies.pop(); //con el metodo pop eliminamos el elemento del arry
-    } else if (randomNumber === 2) {
-      eggs.pop();
-    } else if (randomNumber === 3) {
-      frogs.pop();
-    } else {
-      setGroguPosition((groguPosition) => groguPosition + 1);
-    }
-  };
+      if (randomNumber === 1) {
+            cookies.pop(); //con el metodo pop eliminamos el elemento del arry
+          } else if (randomNumber === 2) {
+            eggs.pop();
+          } else if (randomNumber === 3) {
+            frogs.pop();
+          } else {
+            setGroguPosition((groguPosition) => groguPosition + 1);
+          }
+        };
+    
+
+  //   if (randomNumber === 1) {
+  //     cookies.pop(); //con el metodo pop eliminamos el elemento del arry
+  //   } else if (randomNumber === 2) {
+  //     eggs.pop();
+  //   } else if (randomNumber === 3) {
+  //     frogs.pop();
+  //   } else {
+  //     setGroguPosition((groguPosition) => groguPosition + 1);
+  //   }
+  // };
 
   const handleClickReset = () => {
     setUserName("");
@@ -52,12 +65,10 @@ function App() {
       <main className="page">
         <Board />
         <section>
-          <button className="dice" onClick={handleClickDice}>
-            Lanzar Dado
-          </button>
+          <Dice  updateDice={rollDice}/>
 
           {/* Esto hay que cambiarlo con el mensaje que da cada cara: */}
-          <div className="game-status">{dice}</div>
+          <div className="game-status"></div>
         </section>
 
         <section className="goods__container">
@@ -77,6 +88,6 @@ function App() {
       </main>
     </>
   );
-}
+};
 
 export default App;
