@@ -20,22 +20,21 @@ function App() {
   //   setUserName(valueUserName);
   // };
 
-     const rollDice = () => {
-      const randomNumber = Math.floor(Math.random() * 4) + 1;
-      setDice(randomNumber);
-      console.log(randomNumber)
+  const rollDice = () => {
+    const randomNumber = Math.floor(Math.random() * 4) + 1;
+    setDice(randomNumber);
+    console.log(randomNumber);
 
-      if (randomNumber === 1) {
-            cookies.pop(); //con el metodo pop eliminamos el elemento del arry
-          } else if (randomNumber === 2) {
-            eggs.pop();
-          } else if (randomNumber === 3) {
-            frogs.pop();
-          } else {
-            setGroguPosition((groguPosition) => groguPosition + 1);
-          }
-        };
-    
+    if (randomNumber === 1) {
+      cookies.pop(); //con el metodo pop eliminamos el elemento del arry
+    } else if (randomNumber === 2) {
+      eggs.pop();
+    } else if (randomNumber === 3) {
+      frogs.pop();
+    } else {
+      setGroguPosition((groguPosition) => groguPosition + 1);
+    }
+  };
 
   //   if (randomNumber === 1) {
   //     cookies.pop(); //con el metodo pop eliminamos el elemento del arry
@@ -63,22 +62,35 @@ function App() {
     <>
       <Header />
       <main className="page">
-        <Board />
+        <Board position={groguPosition} />
         <section>
-          <Dice  updateDice={rollDice}/>
+          <Dice updateDice={rollDice} />
 
           {/* Esto hay que cambiarlo con el mensaje que da cada cara: */}
           <div className="game-status"></div>
         </section>
 
         <section className="goods__container">
-          {cookies.map(() => <div className="goods__item">🍪</div>)}  {/* map pinta el hmtl con la cantidad de elementos del arry*/}
+          {cookies.map((item, index) => (
+            <div key={index} className="goods__item">
+              🍪
+            </div>
+          ))}{" "}
+          {/* map pinta el hmtl con la cantidad de elementos del arry*/}
         </section>
         <section className="goods__container">
-        {eggs.map(() => <div className="goods__item">🥚</div>)}
+          {eggs.map((item, index) => (
+            <div key={index} className="goods__item">
+              🥚
+            </div>
+          ))}
         </section>
         <section className="goods__container">
-         {frogs.map(() => <div className="goods__item">🐸</div> )} 
+          {frogs.map((item, index) => (
+            <div key={index} className="goods__item">
+              🐸
+            </div>
+          ))}
         </section>
         <section>
           <button className="restart-button" onClick={handleClickReset}>
@@ -88,6 +100,6 @@ function App() {
       </main>
     </>
   );
-};
+}
 
 export default App;

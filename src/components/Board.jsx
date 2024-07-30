@@ -1,20 +1,21 @@
-import Grogu from "./Grogu";
+// import Grogu from "./Grogu";
 import "../scss/components/Board.scss";
 
-function Board() {
-  return (
-    <section className="board">
-      <div className="board__cell">
-        <Grogu />
-      </div>
-      <div className="board__cell"></div>
-      <div className="board__cell"></div>
-      <div className="board__cell"></div>
-      <div className="board__cell"></div>
-      <div className="board__cell"></div>
-      <div className="board__cell"></div>
-    </section>
-  );
+function Board(props) {
+  const boardCells = Array(7).fill(null);
+
+  // {
+  //   props.position;
+  // }
+  console.log(boardCells);
+
+  const renderBoard = () => {
+    return boardCells.map((item, index) => {
+      return <div key={index} className="board__cell"></div>;
+    });
+  };
+
+  return <section className="board">{renderBoard()}</section>;
 }
 
 export default Board;
