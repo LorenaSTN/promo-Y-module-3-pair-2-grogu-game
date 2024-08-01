@@ -1,17 +1,15 @@
-// import Grogu from "./Grogu";
+import Grogu from "./Grogu";
 import "../scss/components/Board.scss";
 
 function Board(props) {
   const boardCells = Array(7).fill(null);
 
-  // {
-  //   props.position;
-  // }
-  console.log(boardCells);
+  boardCells[props.position] = <Grogu />;
+
 
   const renderBoard = () => {
     return boardCells.map((item, index) => {
-      return <div key={index} className="board__cell"></div>;
+      return <div key={index} className="board__cell">{item}</div>;
     });
   };
 
