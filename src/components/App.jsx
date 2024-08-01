@@ -3,8 +3,11 @@ import { useState } from "react";
 import Header from "./Header";
 import Board from "./Board";
 import Dice from "./Dice";
+import Form from "./Form";
+import GameStatus from "./GameStatus";
+
 function App() {
-  // const [userName, setUserName] = useState("");
+  const [name, setName] = useState("");
   const [dice, setDice] = useState(null);
   const [groguPosition, setGroguPosition] = useState(0);
   // const [wonGame, setWonGame] = useState (false);
@@ -15,10 +18,9 @@ function App() {
   const [eggs, setEggs] = useState(["🥚", "🥚", "🥚"]);
   const [frogs, setFrogs] = useState(["🐸", "🐸", "🐸"]);
 
-  // const handleChangeUserName = (event) => {
-  //   const valueUserName = event.target.value;
-  //   setUserName(valueUserName);
-  // };
+  const handleChangeName = (valueName) => {
+    setName(valueName);
+  };
 
   const rollDice = () => {
     const randomNumber = Math.floor(Math.random() * 4) + 1;
@@ -60,14 +62,13 @@ function App() {
 
   return (
     <>
-      <Header />
+      <Header nameInput={name} />
+      <Form changeInputName={handleChangeName} />
       <main className="page">
         <Board position={groguPosition} />
         <section>
           <Dice updateDice={rollDice} />
-
-          {/* Esto hay que cambiarlo con el mensaje que da cada cara: */}
-          <div className="game-status"></div>
+          <GameStatus statusName={name}/>
         </section>
 
         <section className="goods__container">
