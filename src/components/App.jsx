@@ -1,5 +1,5 @@
 import "../scss/App.scss";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from "./Header";
 import Board from "./Board";
 import Dice from "./Dice";
@@ -22,32 +22,35 @@ function App() {
     setName(valueName);
   };
 
+  // Declarar las frases del juego sin ganar y perder
+
   const rollDice = () => {
     const randomNumber = Math.floor(Math.random() * 4) + 1;
     setDice(randomNumber);
     console.log(randomNumber);
 
     if (randomNumber === 1) {
-      cookies.pop(); //con el metodo pop eliminamos el elemento del arry
+      setCookies(cookies.slice(1));
     } else if (randomNumber === 2) {
-      eggs.pop();
+      setEggs(eggs.slice(1));
     } else if (randomNumber === 3) {
-      frogs.pop();
+      setFrogs(frogs.slice(1));
     } else {
       setGroguPosition((groguPosition) => groguPosition + 1);
     }
   };
 
-  //   if (randomNumber === 1) {
-  //     cookies.pop(); //con el metodo pop eliminamos el elemento del arry
-  //   } else if (randomNumber === 2) {
-  //     eggs.pop();
-  //   } else if (randomNumber === 3) {
-  //     frogs.pop();
-  //   } else {
-  //     setGroguPosition((groguPosition) => groguPosition + 1);
-  //   }
-  // };
+  useEffect(() => {
+    const allGoodsCollected =
+      cookies.length === 0 && eggs.length === 0 && frogs.length === 0;
+    const groguWin = groguPosition >= 6;
+
+    if (allGoodsCollected) {
+      setGameStatus("Ganaste, Mando completa la misión");
+    } else if (groguWin) {
+      setGameStatus("¡¡Grogu se ha comido el cargamento!! Has perdido");
+    }
+  }, [cookies, eggs, frogs, gameStatus]);
 
   const handleClickReset = () => {
     setUserName("");
@@ -68,7 +71,7 @@ function App() {
         <Board position={groguPosition} />
         <section>
           <Dice updateDice={rollDice} />
-          <GameStatus statusName={name}/>
+          <GameStatus statusName={gameStatus} />
         </section>
 
         <section className="goods__container">
