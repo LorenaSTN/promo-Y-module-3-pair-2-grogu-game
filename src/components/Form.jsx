@@ -1,4 +1,4 @@
-function Form({ changeInputName }) {
+function Form({ changeInputName, inputValue }) {
   const handleChangeUserName = (event) => {
     changeInputName(event.target.value);
   };
@@ -14,8 +14,8 @@ function Form({ changeInputName }) {
         name="name"
         id="name"
         placeholder="Tu nombre"
-        // value={inputName}
         onChange={handleChangeUserName}
+        value={inputValue}
       />
     </form>
   );

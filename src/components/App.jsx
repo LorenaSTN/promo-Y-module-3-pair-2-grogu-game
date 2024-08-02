@@ -10,7 +10,6 @@ function App() {
   const [name, setName] = useState("");
   const [dice, setDice] = useState(null);
   const [groguPosition, setGroguPosition] = useState(0);
-  const [nameInput, setNameInput] = useState("");
   // const [wonGame, setWonGame] = useState (false);
   // const [gameOver, setGameOver] = useState (false);
   const [gameStatus, setGameStatus] = useState("en curso");
@@ -64,7 +63,7 @@ function App() {
   return (
     <>
       <Header nameInput={name} />
-      <Form changeInputName={handleChangeName} />
+      <Form changeInputName={handleChangeName} inputValue={name} />
       <main className="page">
         <Board position={groguPosition} />
         <section>
