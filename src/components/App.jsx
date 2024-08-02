@@ -10,6 +10,7 @@ function App() {
   const [name, setName] = useState("");
   const [dice, setDice] = useState(null);
   const [groguPosition, setGroguPosition] = useState(0);
+  const [nameInput, setNameInput] = useState("");
   // const [wonGame, setWonGame] = useState (false);
   // const [gameOver, setGameOver] = useState (false);
   const [gameStatus, setGameStatus] = useState("en curso");
@@ -21,8 +22,6 @@ function App() {
   const handleChangeName = (valueName) => {
     setName(valueName);
   };
-
-  // Declarar las frases del juego sin ganar y perder
 
   const rollDice = () => {
     const randomNumber = Math.floor(Math.random() * 4) + 1;
@@ -53,14 +52,13 @@ function App() {
   }, [cookies, eggs, frogs, gameStatus]);
 
   const handleClickReset = () => {
-    setUserName("");
+    setName("");
     setDice(null);
     setGroguPosition(0);
     setCookies(["🍪", "🍪", "🍪"]);
     setEggs(["🥚", "🥚", "🥚"]);
-
-    // setWonGame(false);
-    // setGameOver(false);
+    setFrogs(["🐸", "🐸", "🐸"]);
+    setGameStatus("En curso");
   };
 
   return (
@@ -71,6 +69,8 @@ function App() {
         <Board position={groguPosition} />
         <section>
           <Dice updateDice={rollDice} />
+        </section>
+        <section>
           <GameStatus statusName={gameStatus} />
         </section>
 
@@ -79,8 +79,7 @@ function App() {
             <div key={index} className="goods__item">
               🍪
             </div>
-          ))}{" "}
-          {/* map pinta el hmtl con la cantidad de elementos del arry*/}
+          ))}
         </section>
         <section className="goods__container">
           {eggs.map((item, index) => (
