@@ -1,6 +1,5 @@
-
 import "../scss/App.scss";
-import {Routes, Route} from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Header from "./Header";
 import Board from "./Board";
@@ -70,13 +69,15 @@ function App() {
       <Header nameInput={name} />
       <Form changeInputName={handleChangeName} inputValue={name} />
       <main className="page">
-      <Routes>
-      <Route path="/" element={<App/>}></Route>
-      <Route path="/instructions" element={<Instrucciones/>}> </Route>
-      <Route path="/options" element={<Options/>}> </Route>
-
-  
-      </Routes>
+        <Routes>
+          <Route path="/"></Route>
+          <Route path="/instructions" element={<Instrucciones />}>
+            {" "}
+          </Route>
+          <Route path="/options" element={<Options />}>
+            {" "}
+          </Route>
+        </Routes>
 
         <Board position={groguPosition} />
         <section>
@@ -113,7 +114,7 @@ function App() {
           </button>
         </section>
       </main>
-      <Footer/>
+      <Footer />
     </>
   );
 }
