@@ -1,10 +1,15 @@
+
 import "../scss/App.scss";
+import {Routes, Route} from "react-router-dom";
 import { useState, useEffect } from "react";
 import Header from "./Header";
 import Board from "./Board";
 import Dice from "./Dice";
 import Form from "./Form";
 import GameStatus from "./GameStatus";
+import Footer from "./Footer";
+import Instrucciones from "./Instrucciones";
+import Options from "./Options";
 
 function App() {
   const [name, setName] = useState("");
@@ -65,6 +70,14 @@ function App() {
       <Header nameInput={name} />
       <Form changeInputName={handleChangeName} inputValue={name} />
       <main className="page">
+      <Routes>
+      <Route path="/" element={<App/>}></Route>
+      <Route path="/instructions" element={<Instrucciones/>}> </Route>
+      <Route path="/options" element={<Options/>}> </Route>
+
+  
+      </Routes>
+
         <Board position={groguPosition} />
         <section>
           <Dice updateDice={rollDice} />
@@ -100,6 +113,7 @@ function App() {
           </button>
         </section>
       </main>
+      <Footer/>
     </>
   );
 }
