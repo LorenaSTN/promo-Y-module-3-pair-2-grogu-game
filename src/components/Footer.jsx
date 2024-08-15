@@ -1,37 +1,28 @@
 import { NavLink } from "react-router-dom";
+import "../scss/components/Footer.scss";
 
 function Footer() {
   return (
     <>
-    <footer class="footer">
-  <nav>
-    <ul>
-      <li class="footer__menu-item">
+      <footer className="footer">
+        <nav>
+          <ul className="footer__ul">
+            <li className="footer__menu-item">
+              <NavLink to="/">A jugar 🐸</NavLink>
+            </li>
 
-      <NavLink to="/" 
-        className={`${({ isActive, isPending }) =>
-        isPending ? "pending" : isActive ? "active" : "" } footer__menu-link`}>A jugar</NavLink>
-      </li>
-      
-      <li class="footer__menu-item">
-      <NavLink to="/instructions" className={`${({ isActive, isPending }) =>
-        isPending ? "pending" : isActive ? "active" : "" } footer__menu-link active`}>¿Cómo se juega?</NavLink>
-        
-    
-
-      </li>
-      <li class="footer__menu-item">
-      <NavLink to="/options" className={`${({ isActive, isPending }) =>
-        isPending ? "pending" : isActive ? "active" : "" } footer__menu-link`}    >Más Opciones</NavLink>
-      
-        
-      </li>
-    </ul>
-  </nav>
-  <small class="footer__copy">© Adalab</small>
-</footer>
-</>
-  )
-};
+            <li className="footer__menu-item">
+              <NavLink to="/instructions">¿Cómo se juega? 🍪</NavLink>
+            </li>
+            <li className="footer__menu-item">
+              <NavLink to="/options">Más Opciones 🥚</NavLink>
+            </li>
+          </ul>
+        </nav>
+        <small className="footer__copy">© Adalab</small>
+      </footer>
+    </>
+  );
+}
 
 export default Footer;

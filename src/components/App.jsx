@@ -1,5 +1,4 @@
 import "../scss/App.scss";
-import { Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Header from "./Header";
 import Board from "./Board";
@@ -7,7 +6,8 @@ import Dice from "./Dice";
 import Form from "./Form";
 import GameStatus from "./GameStatus";
 import Footer from "./Footer";
-import Instrucciones from "./Instrucciones";
+import { Routes, Route } from "react-router-dom";
+import Instructions from "./Instructions";
 import Options from "./Options";
 
 function App() {
@@ -66,54 +66,63 @@ function App() {
 
   return (
     <>
-      <Header nameInput={name} />
-      <Form changeInputName={handleChangeName} inputValue={name} />
-      <main className="page">
-        <Routes>
-          <Route path="/"></Route>
-          <Route path="/instructions" element={<Instrucciones />}>
-            {" "}
-          </Route>
-          <Route path="/options" element={<Options />}>
-            {" "}
-          </Route>
-        </Routes>
+      <Routes>
+        <Route
+          className="route"
+          path="/"
+          element={
+            <>
+              <Header nameInput={name} />
+              <Form changeInputName={handleChangeName} inputValue={name} />
+              <main className="page">
+                <Board position={groguPosition} />
+                <section>
+                  <Dice updateDice={rollDice} />
+                </section>
+                <section>
+                  <GameStatus statusName={gameStatus} />
+                </section>
 
-        <Board position={groguPosition} />
-        <section>
-          <Dice updateDice={rollDice} />
-        </section>
-        <section>
-          <GameStatus statusName={gameStatus} />
-        </section>
+                <section className="goods__container">
+                  {cookies.map((item, index) => (
+                    <div key={index} className="goods__item">
+                      🍪
+                    </div>
+                  ))}
+                </section>
+                <section className="goods__container">
+                  {eggs.map((item, index) => (
+                    <div key={index} className="goods__item">
+                      🥚
+                    </div>
+                  ))}
+                </section>
+                <section className="goods__container">
+                  {frogs.map((item, index) => (
+                    <div key={index} className="goods__item">
+                      🐸
+                    </div>
+                  ))}
+                </section>
+                <section className="restart-section">
+                  <button className="restart-button" onClick={handleClickReset}>
+                    Reiniciar Juego
+                  </button>
+                </section>
+              </main>
+            </>
+          }
+        ></Route>
 
-        <section className="goods__container">
-          {cookies.map((item, index) => (
-            <div key={index} className="goods__item">
-              🍪
-            </div>
-          ))}
-        </section>
-        <section className="goods__container">
-          {eggs.map((item, index) => (
-            <div key={index} className="goods__item">
-              🥚
-            </div>
-          ))}
-        </section>
-        <section className="goods__container">
-          {frogs.map((item, index) => (
-            <div key={index} className="goods__item">
-              🐸
-            </div>
-          ))}
-        </section>
-        <section>
-          <button className="restart-button" onClick={handleClickReset}>
-            Reiniciar Juego
-          </button>
-        </section>
-      </main>
+        <Route
+          className="route"
+          path="/Instructions"
+          element={<Instructions />}
+        ></Route>
+
+        <Route className="route" path="/Options" element={<Options />}></Route>
+      </Routes>
+
       <Footer />
     </>
   );

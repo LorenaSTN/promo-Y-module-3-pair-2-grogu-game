@@ -1,0 +1,22 @@
+.instructions {
+  &__div {
+    text-align: center;
+    padding: 20px 80px 20px 80px;
+  }
+  &__title {
+    text-shadow: 2px 2px 5px #000;
+    color: white;
+    font-size: 40px;
+  }
+
+  &__subtitle {
+    text-shadow: 2px 2px 5px #000;
+    color: white;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+  &__p {
+    color: white;
+    text-align: justify;
+  }
+}
